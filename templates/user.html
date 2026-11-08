@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Profil @{{ username }} | Jelajah Tuban{% endblock %}
+{% block content %}
+<section class="page-hero compact-hero"><div class="container"><span class="eyebrow">PROFIL PENJELAJAH</span><h1>Halo, {{ user.name }}.</h1><p>Berikut halaman profil contoh untuk username yang telah terdaftar.</p></div></section>
+<section class="container section-pad"><div class="profile-card"><div class="profile-avatar">{{ user.name[0]|upper }}</div><div><span class="card-category">USERNAME TERDAFTAR</span><h2>{{ user.name }}</h2><p>@{{ username }} · {{ user.role }}</p><span class="profile-status">● Akun terdaftar</span></div></div><a class="text-link" href="{{ url_for('cek_form') }}">← Kembali ke pengecekan username</a></section>
+{% endblock %}

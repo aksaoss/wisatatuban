@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}404 | Halaman Tidak Ditemukan{% endblock %}
+{% block content %}
+<section class="error-page container"><span class="error-number">404</span><span class="eyebrow">TERSASAR SEBENTAR?</span><h1>Halaman ini belum<br><em>ada di peta kami.</em></h1><p>Alamat yang kamu cari tidak ditemukan. Yuk, kembali dan lanjutkan perjalanan.</p><a class="button button-primary" href="{{ url_for('home') }}">Kembali ke beranda ↗</a></section>
+{% endblock %}

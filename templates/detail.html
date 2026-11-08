@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ destination.name }} | Jelajah Tuban{% endblock %}
+{% block content %}
+<section class="detail-hero" style="background-image: linear-gradient(90deg,rgba(9,35,31,.78),rgba(9,35,31,.12)),url('{{ destination.image }}')">
+  <div class="container detail-hero-content"><span class="eyebrow light">{{ destination.category|upper }}</span><h1>{{ destination.name }}</h1><p>{{ destination.location }}</p></div>
+</section>
+<section class="container detail-content section-pad">
+  <div><div class="section-kicker">CERITA DESTINASI</div><h2>Kenali tempatnya,<br><em>rasakan pengalamannya.</em></h2><p>{{ destination.description }}</p><a class="text-link" href="{{ url_for('destinasi') }}">← Kembali ke semua destinasi</a></div>
+  <aside class="info-panel"><span>ESTIMASI TIKET MASUK</span><strong>{{ destination.price|rupiah }}</strong><small>Harga merupakan data contoh untuk kebutuhan tugas.</small><a class="button button-primary" href="{{ url_for('kontak') }}">Tanya informasi <span>↗</span></a></aside>
+</section>
+{% endblock %}

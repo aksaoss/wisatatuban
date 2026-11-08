@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Cek Username | Jelajah Tuban{% endblock %}
+{% block content %}
+<section class="page-hero compact-hero"><div class="container"><span class="eyebrow">FITUR AKUN</span><h1>Cek nama pengguna<br><em>sebelum bergabung.</em></h1><p>Pastikan username pilihanmu valid dan belum digunakan.</p></div></section>
+<section class="container section-pad checker-wrap">
+  <div class="checker-card">
+    <div class="section-kicker">USERNAME CHECKER / FLASK ROUTE</div><h2>Username pilihanmu?</h2><p>Gunakan 3–20 karakter. Awali dengan huruf dan gunakan huruf, angka, atau underscore.</p>
+    <form action="{{ url_for('submit_cek_username') }}" method="POST" class="check-form">
+      <label for="username">Nama pengguna</label>
+      <div class="input-row"><span>@</span><input id="username" name="username" type="text" placeholder="contoh: penjelajah_tuban" minlength="1" maxlength="30" required><button class="button button-primary" type="submit">Periksa ↗</button></div>
+    </form>
+    {% if status %}
+      <div class="status-box status-{{ status }}">
+        {% if status == "invalid" %}
+          <strong>✕ Username tidak valid</strong>
+        {% elif status == "taken" %}
+          <strong>! Username sudah dipakai</strong>
+        {% elif status == "available" %}
+          <strong>✓ Username tersedia</strong>
+        {% endif %}
+        <p>{{ message }}</p>
+        {% if status == "taken" %}
+          <a href="{{ url_for('user_profile', username=username) }}" class="text-link">Lihat contoh profil pengguna →</a>
+        {% endif %}
+      </div>
+    {% endif %}
+    <div class="checker-hint"><span>Contoh username terdaftar:</span> <code>aksa</code> <code>admin</code> <code>tubanexplorer</code></div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Destinasi Wisata | Jelajah Tuban{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="container"><span class="eyebrow">PETA PETUALANGANMU</span><h1>Temukan tempat<br><em>untuk dikunjungi.</em></h1><p>Pilih destinasi, kenali pesonanya, lalu susun perjalanan versimu.</p></div>
+</section>
+<section class="container section-pad">
+  <div class="listing-top"><div><div class="section-kicker">KOLEKSI DESTINASI</div><h2>Jelajahi Tuban</h2></div><span class="result-count">{{ destinations|length }} tempat pilihan</span></div>
+  <div class="destination-grid listing-grid">
+    {% for item in destinations %}
+    <article class="destination-card">
+      <a href="{{ url_for('detail_destinasi', id=item.id) }}" class="card-image"><img src="{{ item.image }}" alt="{{ item.name }}"><span class="card-tag">{{ item.tag }}</span></a>
+      <div class="card-body"><span class="card-category">{{ item.category }} · {{ item.location }}</span><h3><a href="{{ url_for('detail_destinasi', id=item.id) }}">{{ item.name }}</a></h3><p>{{ item.description|truncate(105) }}</p><div class="card-bottom"><span>Mulai {{ item.price|rupiah }}</span><a href="{{ url_for('detail_destinasi', id=item.id) }}">Detail ↗</a></div></div>
+    </article>
+    {% else %}
+    <p>Belum ada destinasi yang ditambahkan.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

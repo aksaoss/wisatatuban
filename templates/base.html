@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jelajahi pesona wisata Tuban bersama Jelajah Tuban.">
+  <title>{% block title %}Jelajah Tuban{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">J</span><span>jelajah<span class="brand-light">tuban.</span></span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka navigasi">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="{{ url_for('home') }}">Beranda</a>
+        <a href="{{ url_for('tentang') }}">Tentang</a>
+        <a href="{{ url_for('destinasi') }}">Destinasi</a>
+        <a href="{{ url_for('kontak') }}">Kontak</a>
+        <a class="nav-cta" href="{{ url_for('cek_form') }}">Cek username <span>↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>{% block content %}{% endblock %}</main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand" href="{{ url_for('home') }}"><span class="brand-mark">J</span><span>jelajah<span class="brand-light">tuban.</span></span></a>
+        <p>Temukan sudut terbaik Tuban. Rencanakan perjalanan, nikmati cerita, dan bawa pulang kenangan.</p>
+      </div>
+      <div>
+        <h4>Jelajahi</h4>
+        <a href="{{ url_for('destinasi') }}">Destinasi wisata</a>
+        <a href="{{ url_for('tentang') }}">Tentang kami</a>
+        <a href="{{ url_for('kontak') }}">Kontak</a>
+      </div>
+      <div>
+        <h4>Eksplorasi akun</h4>
+        <a href="{{ url_for('cek_form') }}">Pengecekan username</a>
+        <a href="{{ url_for('user_profile', username='aksa') }}">Contoh profil</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">© 2026 Jelajah Tuban. Proyek pembelajaran Flask.</div>
+  </footer>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

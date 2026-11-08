@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Jelajah Tuban | Temukan Cerita di Setiap Perjalanan{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <span class="eyebrow light">PESONA JAWA TIMUR · TUBAN</span>
+    <h1>Setiap sudut punya<br><em>cerita untuk dijelajahi.</em></h1>
+    <p>Dari garis pantai yang menenangkan hingga alam tersembunyi. Mulai petualanganmu di Bumi Wali.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="{{ url_for('destinasi') }}">Jelajahi destinasi <span>↗</span></a>
+      <a class="text-link light-link" href="{{ url_for('tentang') }}">Kenali Jelajah Tuban</a>
+    </div>
+    <div class="hero-note"><span class="dot"></span> Inspirasi perjalanan lokal, langsung dari Tuban</div>
+  </div>
+  <div class="hero-stamp"><span>EXPLORE</span><strong>TUBAN</strong><small>JAWA TIMUR · INDONESIA</small></div>
+</section>
+
+<section class="intro-section container section-pad">
+  <div class="section-kicker">01 / KENALI TUBAN</div>
+  <div class="intro-grid">
+    <h2>Perjalanan hebat<br>dimulai dari rasa<br><em>ingin tahu.</em></h2>
+    <div class="intro-copy">
+      <p>Tuban menyimpan banyak kejutan: pesisir yang teduh, air terjun yang menyegarkan, hingga jejak alam yang menarik untuk disusuri.</p>
+      <a class="text-link" href="{{ url_for('tentang') }}">Cerita tentang kami <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="destinations-section section-pad">
+  <div class="container">
+    <div class="section-heading">
+      <div><div class="section-kicker">02 / PILIH PETUALANGAN</div><h2>Tempat yang layak<br><em>masuk daftar perjalananmu.</em></h2></div>
+      <a class="text-link" href="{{ url_for('destinasi') }}">Lihat semua destinasi <span>→</span></a>
+    </div>
+    <div class="destination-grid">
+      {% for item in featured %}
+      <article class="destination-card">
+        <a href="{{ url_for('detail_destinasi', id=item.id) }}" class="card-image">
+          <img src="{{ item.image }}" alt="{{ item.name }}">
+          <span class="card-tag">{{ item.tag }}</span>
+        </a>
+        <div class="card-body">
+          <span class="card-category">{{ item.category }} · {{ item.location }}</span>
+          <h3><a href="{{ url_for('detail_destinasi', id=item.id) }}">{{ item.name }}</a></h3>
+          <div class="card-bottom"><span>Mulai {{ item.price|rupiah }}</span><a href="{{ url_for('detail_destinasi', id=item.id) }}">Lihat detail ↗</a></div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band container">
+  <div><span class="eyebrow light">SIAP MENJELAJAH?</span><h2>Temukan tempat<br>favoritmu di Tuban.</h2></div>
+  <a class="button button-light" href="{{ url_for('destinasi') }}">Mulai eksplorasi <span>↗</span></a>
+</section>
+{% endblock %}
